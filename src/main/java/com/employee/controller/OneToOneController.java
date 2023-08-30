@@ -16,6 +16,18 @@ public class OneToOneController {
 	@Autowired
 	OneToOneService onetoOneService;
 	
+	/*
+	 * {
+		    "empid":"15",
+		    "name":"sunil",
+		    "salary":300000,
+		    "dept":{
+		        "deptId":26,
+		        "name":"Engineering"
+		    }
+		}
+	 */
+	
 	@PostMapping("/onetoone")
 	public void MapOnetoOne(@RequestBody Employee employee) {
 		onetoOneService.OnetoOneMapping(employee);
