@@ -1,6 +1,8 @@
 package com.employee.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,8 +31,11 @@ public class OneToOneController {
 	 */
 	
 	@PostMapping("/onetoone")
-	public void MapOnetoOne(@RequestBody Employee employee) {
+	public ResponseEntity<Employee> MapOnetoOne(@RequestBody Employee employee) {
 		onetoOneService.OnetoOneMapping(employee);
+		return ResponseEntity.status(HttpStatus.CREATED).body(employee);
 	}
+	
+	
 
 }

@@ -13,6 +13,14 @@ public class Department {
 	
 	String name;
 	
+	public Employee getEmp() {
+		return emp;
+	}
+
+	public void setEmp(Employee emp) {
+		this.emp = emp;
+	}
+
 	@OneToOne(mappedBy = "dept")
 	public Employee emp;
 

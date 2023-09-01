@@ -1,6 +1,8 @@
 package com.employee.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.employee.model.Department;
@@ -17,15 +19,16 @@ public class OneToOneService {
 	@Autowired
 	DeptRepo deptrepo;
 	
-	public void OnetoOneMapping(Employee employee) {
-		System.out.println("*********************************"+employee.getEmpid());
-		Department dept=employee.getDept();
+	public ResponseEntity<Employee> OnetoOneMapping(Employee employee) {
 		
+		Department dept=employee.getDept();
 		employee.setDept(dept);
-		System.out.println(dept.getDeptId()+"***********"+dept.getName());
 		deptrepo.save(dept);
 		emprepo.save(employee);
+		return ResponseEntity.status(HttpStatus.CREATED).body(employee);
 		
 	}
+	
+	
 
 }
